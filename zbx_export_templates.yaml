@@ -1,0 +1,2421 @@
+zabbix_export:
+  version: '6.2'
+  date: '2023-01-22T21:03:26Z'
+  template_groups:
+    -
+      uuid: 7df96b18c230490a9a0a9e2307226338
+      name: Templates
+  templates:
+    -
+      uuid: 801889ea24b441de80219ca1396ed61a
+      template: 'OpenEMS by HTTP'
+      name: 'OpenEMS by HTTP'
+      description: |
+        A template to collect the data from the OpenEMS REST API
+        
+        
+        Implemented after the Fenecon FEMS documentation: https://docs.fenecon.de/de/_/latest/fems/apis.html#_datenpunkte
+        
+        and the glossary https://docs.fenecon.de/de/_/latest/fems/glossar.html#_nature
+        additional datapoints can be found in the api-doc.mentioned there.
+      groups:
+        -
+          name: Templates
+      items:
+        -
+          uuid: 2fd5b67a3b184d88942bcc8a34b42c3a
+          name: 'Battery0 Capacity'
+          type: HTTP_AGENT
+          key: openems_battery0_capacity
+          delay: 1d
+          history: 365d
+          trends: '0'
+          units: Wh
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.value
+          url: '{$EMS_USERNAME}:{$EMS_PASSWORD}@{HOST.IP}:{$EMS_PORT}/rest/channel/battery0/Capacity'
+          tags:
+            -
+              tag: OPENEMS-COMPONENT
+              value: battery0
+        -
+          uuid: bf3cfec02eb94c8787c0d8fc47978248
+          name: 'Battery0 Maximum Charge Current'
+          type: HTTP_AGENT
+          key: openems_battery0_chargemaxcurrent
+          delay: 1d
+          history: 365d
+          trends: '0'
+          units: A
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.value
+          url: '{$EMS_USERNAME}:{$EMS_PASSWORD}@{HOST.IP}:{$EMS_PORT}/rest/channel/battery0/ChargeMaxCurrent'
+          tags:
+            -
+              tag: OPENEMS-COMPONENT
+              value: battery0
+        -
+          uuid: 9851feccdfdb4cce8dded9968781f2fc
+          name: 'Battery0 Maximum Charge Voltage'
+          type: HTTP_AGENT
+          key: openems_battery0_chargemaxvoltage
+          delay: 1d
+          history: 365d
+          trends: '0'
+          units: V
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.value
+          url: '{$EMS_USERNAME}:{$EMS_PASSWORD}@{HOST.IP}:{$EMS_PORT}/rest/channel/battery0/ChargeMaxVoltage'
+          tags:
+            -
+              tag: OPENEMS-COMPONENT
+              value: battery0
+        -
+          uuid: f53bbb8bcba440138aa8a08931ed6487
+          name: 'Battery0 Current'
+          type: HTTP_AGENT
+          key: openems_battery0_current
+          delay: 5m
+          history: 365d
+          trends: 1825d
+          value_type: FLOAT
+          units: A
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.value
+          url: '{$EMS_USERNAME}:{$EMS_PASSWORD}@{HOST.IP}:{$EMS_PORT}/rest/channel/battery0/Current'
+          tags:
+            -
+              tag: OPENEMS-COMPONENT
+              value: battery0
+        -
+          uuid: 39b62ca23fbc4924b38de8beb07cc775
+          name: 'Battery0 Maximum Discharge Current'
+          type: HTTP_AGENT
+          key: openems_battery0_dischargemaxcurrent
+          delay: 1d
+          history: 365d
+          trends: '0'
+          units: A
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.value
+          url: '{$EMS_USERNAME}:{$EMS_PASSWORD}@{HOST.IP}:{$EMS_PORT}/rest/channel/battery0/DischargeMaxCurrent'
+          tags:
+            -
+              tag: OPENEMS-COMPONENT
+              value: battery0
+        -
+          uuid: 3bd7b110f442474895c0b095274957e2
+          name: 'Battery0 Minimum Discharge Voltage'
+          type: HTTP_AGENT
+          key: openems_battery0_dischargeminvoltage
+          delay: 1d
+          history: 365d
+          trends: '0'
+          units: V
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.value
+          url: '{$EMS_USERNAME}:{$EMS_PASSWORD}@{HOST.IP}:{$EMS_PORT}/rest/channel/battery0/DischargeMinVoltage'
+          tags:
+            -
+              tag: OPENEMS-COMPONENT
+              value: battery0
+        -
+          uuid: a507fc4d10f545b5b2f606e71c74edb4
+          name: 'Battery0 Maximal Cell Temperature'
+          type: HTTP_AGENT
+          key: openems_battery0_maxcelltemperature
+          delay: 1h
+          history: 365d
+          trends: 1825d
+          units: C
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.value
+          url: '{$EMS_USERNAME}:{$EMS_PASSWORD}@{HOST.IP}:{$EMS_PORT}/rest/channel/battery0/MaxCellTemperature'
+          tags:
+            -
+              tag: OPENEMS-COMPONENT
+              value: battery0
+        -
+          uuid: fcac1f1dfa75461fbacf8bc9fb7ed67c
+          name: 'Battery0 Minimal Cell Temperature'
+          type: HTTP_AGENT
+          key: openems_battery0_mincelltemperature
+          delay: 1h
+          history: 365d
+          trends: 1825d
+          units: C
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.value
+          url: '{$EMS_USERNAME}:{$EMS_PASSWORD}@{HOST.IP}:{$EMS_PORT}/rest/channel/battery0/MinCellTemperature'
+          tags:
+            -
+              tag: OPENEMS-COMPONENT
+              value: battery0
+        -
+          uuid: 7ff0dea9c21c4ec496d9be1bc18e03ed
+          name: 'Battery0 State of charge'
+          type: HTTP_AGENT
+          key: openems_battery0_soc
+          delay: 5m
+          history: 365d
+          trends: 1825d
+          units: '%'
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.value
+          url: '{$EMS_USERNAME}:{$EMS_PASSWORD}@{HOST.IP}:{$EMS_PORT}/rest/channel/battery0/Soc'
+          tags:
+            -
+              tag: OPENEMS-COMPONENT
+              value: battery0
+          triggers:
+            -
+              uuid: 947e1ad9794e482fa8ac0ae548de31ec
+              expression: 'last(/OpenEMS by HTTP/openems_battery0_soc)<=5'
+              recovery_mode: RECOVERY_EXPRESSION
+              recovery_expression: 'last(/OpenEMS by HTTP/openems_battery0_soc)>=10'
+              name: 'Battery below 5%'
+              opdata: 'Curr. SOC: {ITEM.LASTVALUE}'
+              priority: INFO
+              tags:
+                -
+                  tag: OPENEMS-COMPONENT
+                  value: battery0
+            -
+              uuid: 86a45dcb85384d5fb5cc0ba3edc9489b
+              expression: 'last(/OpenEMS by HTTP/openems_battery0_soc)=0'
+              recovery_mode: RECOVERY_EXPRESSION
+              recovery_expression: 'last(/OpenEMS by HTTP/openems_battery0_soc)>=5'
+              name: 'Battery depleted'
+              opdata: 'Curr. SOC: {ITEM.LASTVALUE}'
+              priority: WARNING
+              dependencies:
+                -
+                  name: 'Battery below 5%'
+                  expression: 'last(/OpenEMS by HTTP/openems_battery0_soc)<=5'
+                  recovery_expression: 'last(/OpenEMS by HTTP/openems_battery0_soc)>=10'
+              tags:
+                -
+                  tag: OPENEMS-COMPONENT
+                  value: battery0
+        -
+          uuid: df5d71f0de804c31a4d0b654e6bb00de
+          name: 'Battery0 State of health'
+          type: HTTP_AGENT
+          key: openems_battery0_soh
+          delay: 5m
+          history: 365d
+          trends: 1825d
+          units: '%'
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.value
+          url: '{$EMS_USERNAME}:{$EMS_PASSWORD}@{HOST.IP}:{$EMS_PORT}/rest/channel/battery0/Soh'
+          tags:
+            -
+              tag: OPENEMS-COMPONENT
+              value: battery0
+        -
+          uuid: ad8a198f93c34c8c92209f870d7d209d
+          name: 'Battery0 State'
+          type: HTTP_AGENT
+          key: openems_battery0_state
+          history: 365d
+          trends: 1825d
+          units: '%'
+          valuemap:
+            name: State_ValueMap
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.value
+          url: '{$EMS_USERNAME}:{$EMS_PASSWORD}@{HOST.IP}:{$EMS_PORT}/rest/channel/battery0/State'
+          tags:
+            -
+              tag: OPENEMS-COMPONENT
+              value: battery0
+        -
+          uuid: ee18d5a6615942e79cf209cb7d3e5150
+          name: 'Battery0 Voltage'
+          type: HTTP_AGENT
+          key: openems_battery0_voltage
+          delay: 5m
+          history: 365d
+          trends: 1825d
+          units: V
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.value
+          url: '{$EMS_USERNAME}:{$EMS_PASSWORD}@{HOST.IP}:{$EMS_PORT}/rest/channel/battery0/Voltage'
+          tags:
+            -
+              tag: OPENEMS-COMPONENT
+              value: battery0
+        -
+          uuid: 35a4c26fd0824b51ac5b26855b90c68f
+          name: 'BatteryInverter0 Active Charge Energy'
+          type: HTTP_AGENT
+          key: openems_batteryinverter0_activechargeenergy
+          delay: 5m
+          history: 365d
+          trends: 1825d
+          value_type: FLOAT
+          units: Wh
+          description: 'Active Charge Energy'
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.value
+          url: '{$EMS_USERNAME}:{$EMS_PASSWORD}@{HOST.IP}:{$EMS_PORT}/rest/channel/batteryInverter0/ActiveChargeEnergy'
+          tags:
+            -
+              tag: OPENEMS-COMPONENT
+              value: batteryInverter0
+        -
+          uuid: 83126bc1e4ee4922b48b909e5ffbb2e0
+          name: 'BatteryInverter0 Active Discharge Energy'
+          type: HTTP_AGENT
+          key: openems_batteryinverter0_activedischargeenergy
+          delay: 5m
+          history: 365d
+          trends: 1825d
+          value_type: FLOAT
+          units: Wh
+          description: 'Active Discharge Energy'
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.value
+          url: '{$EMS_USERNAME}:{$EMS_PASSWORD}@{HOST.IP}:{$EMS_PORT}/rest/channel/batteryInverter0/ActiveDischargeEnergy'
+          tags:
+            -
+              tag: OPENEMS-COMPONENT
+              value: batteryInverter0
+        -
+          uuid: 5c32a49a9ae142a6bc96974792dd1348
+          name: 'BatteryInverter0 Active Power'
+          type: HTTP_AGENT
+          key: openems_batteryinverter0_activepower
+          delay: 5m
+          history: 365d
+          trends: 1825d
+          value_type: FLOAT
+          units: W
+          description: 'Negative values for Charge; positive for Discharge'
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.value
+          url: '{$EMS_USERNAME}:{$EMS_PASSWORD}@{HOST.IP}:{$EMS_PORT}/rest/channel/batteryInverter0/ActivePower'
+          tags:
+            -
+              tag: OPENEMS-COMPONENT
+              value: batteryInverter0
+        -
+          uuid: eac4808e0f2741f29817b8f1f5aeb2eb
+          name: 'BatteryInverter0 Grid Mode'
+          type: HTTP_AGENT
+          key: openems_batteryinverter0_gridmode
+          delay: '1'
+          history: 365d
+          trends: 1825d
+          units: '%'
+          valuemap:
+            name: GridMode_ValueMap
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.value
+          url: '{$EMS_USERNAME}:{$EMS_PASSWORD}@{HOST.IP}:{$EMS_PORT}/rest/channel/batteryInverter0/GridMode'
+          tags:
+            -
+              tag: OPENEMS-COMPONENT
+              value: batteryInverter0
+          triggers:
+            -
+              uuid: 61e41583b91143edb288c9753dff380d
+              expression: 'last(/OpenEMS by HTTP/openems_batteryinverter0_gridmode)=2'
+              name: 'Grid Mode: Off-Grid'
+              priority: HIGH
+              description: 'The Grid-Mode of the ESS is in Off-Grid-Mode'
+              tags:
+                -
+                  tag: OPENEMS-COMPONENT
+                  value: batteryInverter0
+        -
+          uuid: b7bbc440f34342dcb3e25e7746e6a2d3
+          name: 'BatteryInverter0 Max Apparent Power'
+          type: HTTP_AGENT
+          key: openems_batteryinverter0_maxapparentpower
+          delay: 1d
+          history: 365d
+          trends: '0'
+          value_type: FLOAT
+          units: W
+          description: 'The currently maximum possible apparent power'
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.value
+          url: '{$EMS_USERNAME}:{$EMS_PASSWORD}@{HOST.IP}:{$EMS_PORT}/rest/channel/batteryInverter0/MaxApparentPower'
+          tags:
+            -
+              tag: OPENEMS-COMPONENT
+              value: batteryInverter0
+        -
+          uuid: ffc26045a16e453c87d7d26810ec8e91
+          name: 'BatteryInverter0 Reactive Power'
+          type: HTTP_AGENT
+          key: openems_batteryinverter0_reactivepower
+          delay: 5m
+          history: 365d
+          trends: 1825d
+          units: var
+          description: 'reactive power, unit VoltAmpereReactive (var)'
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.value
+          url: '{$EMS_USERNAME}:{$EMS_PASSWORD}@{HOST.IP}:{$EMS_PORT}/rest/channel/batteryInverter0/RectivePower'
+          tags:
+            -
+              tag: OPENEMS-COMPONENT
+              value: batteryInverter0
+        -
+          uuid: 30a8c1dd9058426bacf70647d0484271
+          name: 'BatteryInverter0 State'
+          type: HTTP_AGENT
+          key: openems_batteryinverter0_state
+          history: 365d
+          trends: 1825d
+          units: '%'
+          valuemap:
+            name: State_ValueMap
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.value
+          url: '{$EMS_USERNAME}:{$EMS_PASSWORD}@{HOST.IP}:{$EMS_PORT}/rest/channel/batteryInverter0/State'
+          tags:
+            -
+              tag: OPENEMS-COMPONENT
+              value: batteryInverter0
+        -
+          uuid: eadfa6679b754e1d87dade3bfca5b648
+          name: 'Active Energy Retrieve/Provide Ratio'
+          type: CALCULATED
+          key: openems_calculated_activeenergybuysellratio
+          delay: 5m
+          value_type: FLOAT
+          params: last(//openems_sum_gridbuyactiveenergy)/last(//openems_sum_gridsellactiveenergy)
+          description: 'Calculates the ratio between the energy retrieved from the grid and provided to the grid.'
+          tags:
+            -
+              tag: OPENEMS-COMPONENT
+              value: Zabbix-Calculated.Item
+        -
+          uuid: 6c545cb927fc45fca971f38738b692b8
+          name: 'Active Energy Difference'
+          type: CALCULATED
+          key: openems_calculated_activeenergydifference
+          delay: 5m
+          value_type: FLOAT
+          units: Wh
+          params: last(//openems_sum_consumptionactiveenergy)-last(//openems_sum_productionactiveenergy)
+          description: 'Calculates the difference between the consumed energy and the produced energy. If this difference is negative, the system has generated more energy than it has consumed. If it is positive the system consumes more energy than it produces'
+          tags:
+            -
+              tag: OPENEMS-COMPONENT
+              value: Zabbix-Calculated.Item
+        -
+          uuid: ffee18e9b880429cb33e7c1b01dea9b7
+          name: 'Charger0 Actual Energy'
+          type: HTTP_AGENT
+          key: openems_charger0_actualenergy
+          delay: 5m
+          history: 365d
+          trends: 1825d
+          units: Wh
+          description: 'Total amount of energy'
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.value
+          url: '{$EMS_USERNAME}:{$EMS_PASSWORD}@{HOST.IP}:{$EMS_PORT}/rest/channel/charger0/ActualEnergy'
+          tags:
+            -
+              tag: OPENEMS-COMPONENT
+              value: charger0
+        -
+          uuid: 3952f4913a264aa5a3d51634a093b6af
+          name: 'Charger0 Actual Power'
+          type: HTTP_AGENT
+          key: openems_charger0_actualpower
+          delay: 5m
+          history: 365d
+          trends: 1825d
+          units: W
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.value
+          url: '{$EMS_USERNAME}:{$EMS_PASSWORD}@{HOST.IP}:{$EMS_PORT}/rest/channel/charger0/ActualPower'
+          tags:
+            -
+              tag: OPENEMS-COMPONENT
+              value: charger0
+        -
+          uuid: 99a8c8abdf2a4c279b778ffb090c7780
+          name: 'Charger0 Current'
+          type: HTTP_AGENT
+          key: openems_charger0_current
+          delay: 5m
+          history: 365d
+          trends: 1825d
+          units: mA
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.value
+          url: '{$EMS_USERNAME}:{$EMS_PASSWORD}@{HOST.IP}:{$EMS_PORT}/rest/channel/charger0/Current'
+          tags:
+            -
+              tag: OPENEMS-COMPONENT
+              value: charger0
+        -
+          uuid: e78ba5f125bd4e69bda81ee68c6dcf1f
+          name: 'Charger0 Maximum Actual Power'
+          type: HTTP_AGENT
+          key: openems_charger0_maxactualpower
+          delay: 5m
+          history: 365d
+          trends: 1825d
+          units: W
+          description: 'Maximum Ever Actual Power in [W].'
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.value
+          url: '{$EMS_USERNAME}:{$EMS_PASSWORD}@{HOST.IP}:{$EMS_PORT}/rest/channel/charger0/MaxActualPower'
+          tags:
+            -
+              tag: OPENEMS-COMPONENT
+              value: charger0
+        -
+          uuid: d7d2ffd4d837448cb19bafb8e0a3eb9c
+          name: 'Charger0 State'
+          type: HTTP_AGENT
+          key: openems_charger0_state
+          history: 365d
+          trends: 1825d
+          description: '0:Ok, 1:Info, 2:Warning, 3:Fault'
+          valuemap:
+            name: State_ValueMap
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.value
+          url: '{$EMS_USERNAME}:{$EMS_PASSWORD}@{HOST.IP}:{$EMS_PORT}/rest/channel/charger0/State'
+          tags:
+            -
+              tag: OPENEMS-COMPONENT
+              value: charger0
+        -
+          uuid: 3996060baccc4bacb32b05805a57c4b2
+          name: 'Charger0 Voltage'
+          type: HTTP_AGENT
+          key: openems_charger0_voltage
+          delay: 5m
+          history: 365d
+          trends: 1825d
+          units: mV
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.value
+          url: '{$EMS_USERNAME}:{$EMS_PASSWORD}@{HOST.IP}:{$EMS_PORT}/rest/channel/charger0/Voltage'
+          tags:
+            -
+              tag: OPENEMS-COMPONENT
+              value: charger0
+        -
+          uuid: e16ae13994854001be8d5c2a08559060
+          name: 'Charger1 Actual Energy'
+          type: HTTP_AGENT
+          key: openems_charger1_actualenergy
+          delay: 5m
+          history: 365d
+          trends: 1825d
+          units: Wh
+          description: 'Total amount of energy'
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.value
+          url: '{$EMS_USERNAME}:{$EMS_PASSWORD}@{HOST.IP}:{$EMS_PORT}/rest/channel/charger1/ActualEnergy'
+          tags:
+            -
+              tag: OPENEMS-COMPONENT
+              value: charger1
+        -
+          uuid: 00b26cca5e254bb8bdd766da96c55061
+          name: 'Charger1 Actual Power'
+          type: HTTP_AGENT
+          key: openems_charger1_actualpower
+          delay: 5m
+          history: 365d
+          trends: 1825d
+          units: W
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.value
+          url: '{$EMS_USERNAME}:{$EMS_PASSWORD}@{HOST.IP}:{$EMS_PORT}/rest/channel/charger1/ActualPower'
+          tags:
+            -
+              tag: OPENEMS-COMPONENT
+              value: charger1
+        -
+          uuid: 3010912ecf4a4bccb312cd1d3c4e0e49
+          name: 'Charger1 Current'
+          type: HTTP_AGENT
+          key: openems_charger1_current
+          delay: 5m
+          history: 365d
+          trends: 1825d
+          units: mA
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.value
+          url: '{$EMS_USERNAME}:{$EMS_PASSWORD}@{HOST.IP}:{$EMS_PORT}/rest/channel/charger1/Current'
+          tags:
+            -
+              tag: OPENEMS-COMPONENT
+              value: charger1
+        -
+          uuid: e862ec7ee28f4d5e8016e706e04e81a7
+          name: 'Charger1 Maximum Actual Power'
+          type: HTTP_AGENT
+          key: openems_charger1_maxactualpower
+          delay: 5m
+          history: 365d
+          trends: 1825d
+          units: W
+          description: 'Maximum Ever Actual Power in [W].'
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.value
+          url: '{$EMS_USERNAME}:{$EMS_PASSWORD}@{HOST.IP}:{$EMS_PORT}/rest/channel/charger1/MaxActualPower'
+          tags:
+            -
+              tag: OPENEMS-COMPONENT
+              value: charger1
+        -
+          uuid: 8345d1e842cf43578b1f9280d28fc68a
+          name: 'Charger1 State'
+          type: HTTP_AGENT
+          key: openems_charger1_state
+          history: 365d
+          trends: 1825d
+          description: '0:Ok, 1:Info, 2:Warning, 3:Fault'
+          valuemap:
+            name: State_ValueMap
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.value
+          url: '{$EMS_USERNAME}:{$EMS_PASSWORD}@{HOST.IP}:{$EMS_PORT}/rest/channel/charger1/State'
+          tags:
+            -
+              tag: OPENEMS-COMPONENT
+              value: charger1
+        -
+          uuid: 55fd41ab71824a1c9d48af59b827235f
+          name: 'Charger1 Voltage'
+          type: HTTP_AGENT
+          key: openems_charger1_voltage
+          delay: 5m
+          history: 365d
+          trends: 1825d
+          units: mV
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.value
+          url: '{$EMS_USERNAME}:{$EMS_PASSWORD}@{HOST.IP}:{$EMS_PORT}/rest/channel/charger1/Voltage'
+          tags:
+            -
+              tag: OPENEMS-COMPONENT
+              value: charger1
+        -
+          uuid: 731508b074ec4b65ac7135fbda1ac473
+          name: 'ESS0 Active Charge Energy'
+          type: HTTP_AGENT
+          key: openems_ess0_activechargeenergy
+          delay: 5m
+          history: 365d
+          trends: 1825d
+          value_type: FLOAT
+          units: Wh
+          description: 'Active Charge Energy'
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.value
+          url: '{$EMS_USERNAME}:{$EMS_PASSWORD}@{HOST.IP}:{$EMS_PORT}/rest/channel/ess0/ActiveChargeEnergy'
+          tags:
+            -
+              tag: OPENEMS-COMPONENT
+              value: ess0
+        -
+          uuid: 3b3315f748334c81bbad60ebad24dc0d
+          name: 'ESS0 Active Discharge Energy'
+          type: HTTP_AGENT
+          key: openems_ess0_activedischargeenergy
+          delay: 5m
+          history: 365d
+          trends: 1825d
+          value_type: FLOAT
+          units: Wh
+          description: 'Active Discharge Energy'
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.value
+          url: '{$EMS_USERNAME}:{$EMS_PASSWORD}@{HOST.IP}:{$EMS_PORT}/rest/channel/ess0/ActiveDischargeEnergy'
+          tags:
+            -
+              tag: OPENEMS-COMPONENT
+              value: ess0
+        -
+          uuid: d4f9f433904d4445b05ebabedd1b1dc9
+          name: 'ESS0 Active Power'
+          type: HTTP_AGENT
+          key: openems_ess0_activepower
+          delay: 5m
+          history: 365d
+          trends: 1825d
+          value_type: FLOAT
+          units: W
+          description: 'Negative values for Charge; positive for Discharge'
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.value
+          url: '{$EMS_USERNAME}:{$EMS_PASSWORD}@{HOST.IP}:{$EMS_PORT}/rest/channel/ess0/ActivePower'
+          tags:
+            -
+              tag: OPENEMS-COMPONENT
+              value: ess0
+        -
+          uuid: 9ffdf8ffa7ca47f685243bf473a30554
+          name: 'ESS0 Active Power Phase L1'
+          type: HTTP_AGENT
+          key: openems_ess0_activepowerl1
+          delay: 5m
+          history: 365d
+          trends: 1825d
+          value_type: FLOAT
+          units: W
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.value
+          url: '{$EMS_USERNAME}:{$EMS_PASSWORD}@{HOST.IP}:{$EMS_PORT}/rest/channel/ess0/ActivePowerL1'
+          tags:
+            -
+              tag: OPENEMS-COMPONENT
+              value: ess0
+        -
+          uuid: b5d30fe89f074dd2bf86b7a9ec1074d8
+          name: 'ESS0 Active Power Phase L2'
+          type: HTTP_AGENT
+          key: openems_ess0_activepowerl2
+          delay: 5m
+          history: 365d
+          trends: 1825d
+          value_type: FLOAT
+          units: W
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.value
+          url: '{$EMS_USERNAME}:{$EMS_PASSWORD}@{HOST.IP}:{$EMS_PORT}/rest/channel/ess0/ActivePowerL2'
+          tags:
+            -
+              tag: OPENEMS-COMPONENT
+              value: ess0
+        -
+          uuid: 6e80fd8724fa4e2b97de7feb7d2233b2
+          name: 'ESS0 Active Power Phase L3'
+          type: HTTP_AGENT
+          key: openems_ess0_activepowerl3
+          delay: 5m
+          history: 365d
+          trends: 1825d
+          value_type: FLOAT
+          units: W
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.value
+          url: '{$EMS_USERNAME}:{$EMS_PASSWORD}@{HOST.IP}:{$EMS_PORT}/rest/channel/ess0/ActivePowerL3'
+          tags:
+            -
+              tag: OPENEMS-COMPONENT
+              value: ess0
+        -
+          uuid: 15a5e842c1c24c20916f2936ef5a2d8b
+          name: 'ESS0 Allowed Charge Power'
+          type: HTTP_AGENT
+          key: openems_ess0_allowedchargepower
+          delay: 1d
+          history: 365d
+          trends: '0'
+          value_type: FLOAT
+          units: W
+          description: 'Allowed charge power'
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.value
+          url: '{$EMS_USERNAME}:{$EMS_PASSWORD}@{HOST.IP}:{$EMS_PORT}/rest/channel/ess0/AllowedChargePower'
+          tags:
+            -
+              tag: OPENEMS-COMPONENT
+              value: ess0
+        -
+          uuid: cb9147df199d41628f4289894f3b2862
+          name: 'ESS0 Allowed Discharge Power'
+          type: HTTP_AGENT
+          key: openems_ess0_alloweddischargepower
+          delay: 1d
+          history: 365d
+          trends: '0'
+          value_type: FLOAT
+          units: W
+          description: 'Allowed discharge power'
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.value
+          url: '{$EMS_USERNAME}:{$EMS_PASSWORD}@{HOST.IP}:{$EMS_PORT}/rest/channel/ess0/AllowedDischargePower'
+          tags:
+            -
+              tag: OPENEMS-COMPONENT
+              value: ess0
+        -
+          uuid: 88e290c7dce546ffa3bf59b975318a98
+          name: 'ESS0 Capacity'
+          type: HTTP_AGENT
+          key: openems_ess0_capacity
+          delay: 1d
+          history: 365d
+          trends: '0'
+          value_type: FLOAT
+          units: Wh
+          description: Capacity
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.value
+          url: '{$EMS_USERNAME}:{$EMS_PASSWORD}@{HOST.IP}:{$EMS_PORT}/rest/channel/ess0/Capacity'
+          tags:
+            -
+              tag: OPENEMS-COMPONENT
+              value: ess0
+        -
+          uuid: 15382cf0a14a4f88bdcce1e944bf2963
+          name: 'ESS0 Grid Mode'
+          type: HTTP_AGENT
+          key: openems_ess0_gridmode
+          history: 365d
+          trends: 1825d
+          description: '1:On-Grid, 2:Off-Grid'
+          valuemap:
+            name: GridMode_ValueMap
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.value
+          url: '{$EMS_USERNAME}:{$EMS_PASSWORD}@{HOST.IP}:{$EMS_PORT}/rest/channel/ess0/GridMode'
+          tags:
+            -
+              tag: OPENEMS-COMPONENT
+              value: ess0
+          triggers:
+            -
+              uuid: 558d0a4aadf248119b4d01c1304b8b96
+              expression: 'last(/OpenEMS by HTTP/openems_ess0_gridmode)=2'
+              name: 'Grid Mode: Off-Grid'
+              priority: HIGH
+              description: 'The Grid-Mode of the ESS is in Off-Grid-Mode'
+              tags:
+                -
+                  tag: OPENEMS-COMPONENT
+                  value: ess0
+        -
+          uuid: 8017e5d64da94eb88065622374e36f81
+          name: 'ESS0 Max Apparent Power'
+          type: HTTP_AGENT
+          key: openems_ess0_maxapparentpower
+          delay: 1d
+          history: 365d
+          trends: '0'
+          value_type: FLOAT
+          units: W
+          description: 'The currently maximum possible apparent power'
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.value
+          url: '{$EMS_USERNAME}:{$EMS_PASSWORD}@{HOST.IP}:{$EMS_PORT}/rest/channel/ess0/MaxApparentPower'
+          tags:
+            -
+              tag: OPENEMS-COMPONENT
+              value: ess0
+        -
+          uuid: 2af131f02918474b97e5e6561a526239
+          name: 'ESS0 Reactive Power'
+          type: HTTP_AGENT
+          key: openems_ess0_reactivepower
+          delay: 5m
+          history: 365d
+          trends: 1825d
+          units: var
+          description: 'reactive power, unit VoltAmpereReactive (var)'
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.value
+          url: '{$EMS_USERNAME}:{$EMS_PASSWORD}@{HOST.IP}:{$EMS_PORT}/rest/channel/ess0/RectivePower'
+          tags:
+            -
+              tag: OPENEMS-COMPONENT
+              value: ess0
+        -
+          uuid: e804d48b47474747b956a12e7c34da73
+          name: 'ESS0 State of Charge'
+          type: HTTP_AGENT
+          key: openems_ess0_soc
+          delay: 5m
+          history: 365d
+          trends: 1825d
+          value_type: FLOAT
+          units: '%'
+          description: 'The State of Charge'
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.value
+          url: '{$EMS_USERNAME}:{$EMS_PASSWORD}@{HOST.IP}:{$EMS_PORT}/rest/channel/ess0/Soc'
+          tags:
+            -
+              tag: OPENEMS-COMPONENT
+              value: ess0
+        -
+          uuid: 8b574f3c6e6847e89fe783871df7f242
+          name: 'ESS0 State'
+          type: HTTP_AGENT
+          key: openems_ess0_state
+          history: 365d
+          trends: 1825d
+          description: '0:Ok, 1:Info, 2:Warning, 3:Fault'
+          valuemap:
+            name: State_ValueMap
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.value
+          url: '{$EMS_USERNAME}:{$EMS_PASSWORD}@{HOST.IP}:{$EMS_PORT}/rest/channel/ess0/State'
+          tags:
+            -
+              tag: OPENEMS-COMPONENT
+              value: ess0
+        -
+          uuid: 34b98bdc099e4011bdeb2ada720bae00
+          name: 'Meter0 Active Consumption Energy'
+          type: HTTP_AGENT
+          key: openems_meter0_activeconsumptionenergy
+          delay: 5m
+          history: 365d
+          trends: 1825d
+          value_type: FLOAT
+          units: Wh
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.value
+          url: '{$EMS_USERNAME}:{$EMS_PASSWORD}@{HOST.IP}:{$EMS_PORT}/rest/channel/meter0/ActiveConsumptionEnergy'
+          tags:
+            -
+              tag: OPENEMS-COMPONENT
+              value: meter0
+        -
+          uuid: 0dd3678695dc473ea653cfbfc6d94e9d
+          name: 'Meter0 Active Power L1'
+          type: HTTP_AGENT
+          key: openems_meter0_activepowerl1
+          delay: 5m
+          history: 365d
+          trends: 1825d
+          value_type: FLOAT
+          units: W
+          description: 'Negative values for Consumption; positive for Production'
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.value
+          url: '{$EMS_USERNAME}:{$EMS_PASSWORD}@{HOST.IP}:{$EMS_PORT}/rest/channel/meter0/ActivePowerL1'
+          tags:
+            -
+              tag: OPENEMS-COMPONENT
+              value: meter0
+        -
+          uuid: cd31fd4188ce47fb9abefbf76e58b542
+          name: 'Meter0 Active Power L2'
+          type: HTTP_AGENT
+          key: openems_meter0_activepowerl2
+          delay: 5m
+          history: 365d
+          trends: 1825d
+          value_type: FLOAT
+          units: W
+          description: 'Negative values for Consumption; positive for Production'
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.value
+          url: '{$EMS_USERNAME}:{$EMS_PASSWORD}@{HOST.IP}:{$EMS_PORT}/rest/channel/meter0/ActivePowerL2'
+          tags:
+            -
+              tag: OPENEMS-COMPONENT
+              value: meter0
+        -
+          uuid: f5ba9b3afbbd4ee19dd61c52d2562243
+          name: 'Meter0 Active Power L3'
+          type: HTTP_AGENT
+          key: openems_meter0_activepowerl3
+          delay: 5m
+          history: 365d
+          trends: 1825d
+          value_type: FLOAT
+          units: W
+          description: 'Negative values for Consumption; positive for Production'
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.value
+          url: '{$EMS_USERNAME}:{$EMS_PASSWORD}@{HOST.IP}:{$EMS_PORT}/rest/channel/meter0/ActivePowerL3'
+          tags:
+            -
+              tag: OPENEMS-COMPONENT
+              value: meter0
+        -
+          uuid: f3c6c3e10284432b892365de118c851c
+          name: 'Meter0 Active Production Energy'
+          type: HTTP_AGENT
+          key: openems_meter0_activeproductionenergy
+          delay: 5m
+          history: 365d
+          trends: 1825d
+          value_type: FLOAT
+          units: Wh
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.value
+          url: '{$EMS_USERNAME}:{$EMS_PASSWORD}@{HOST.IP}:{$EMS_PORT}/rest/channel/meter0/ActiveProductionEnergy'
+          tags:
+            -
+              tag: OPENEMS-COMPONENT
+              value: meter0
+        -
+          uuid: 0ac71d49348b495093bf4b9ec5711748
+          name: 'Meter0 Current L1'
+          type: HTTP_AGENT
+          key: openems_meter0_current1
+          delay: 5m
+          history: 365d
+          trends: 1825d
+          units: mA
+          description: 'The Current in (milli)Ampere on Phase L1'
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.value
+          url: '{$EMS_USERNAME}:{$EMS_PASSWORD}@{HOST.IP}:{$EMS_PORT}/rest/channel/meter0/CurrentL1'
+          tags:
+            -
+              tag: OPENEMS-COMPONENT
+              value: meter0
+        -
+          uuid: ee410711a926448680ec26f5dff59441
+          name: 'Meter0 Current L2'
+          type: HTTP_AGENT
+          key: openems_meter0_current2
+          delay: 5m
+          history: 365d
+          trends: 1825d
+          units: mA
+          description: 'The Current in (milli)Ampere on Phase L2'
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.value
+          url: '{$EMS_USERNAME}:{$EMS_PASSWORD}@{HOST.IP}:{$EMS_PORT}/rest/channel/meter0/CurrentL2'
+          tags:
+            -
+              tag: OPENEMS-COMPONENT
+              value: meter0
+        -
+          uuid: 0411ccf48be3400b80e740160d71d828
+          name: 'Meter0 Current L3'
+          type: HTTP_AGENT
+          key: openems_meter0_current3
+          delay: 5m
+          history: 365d
+          trends: 1825d
+          units: mA
+          description: 'The Current in (milli)Ampere on Phase L3'
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.value
+          url: '{$EMS_USERNAME}:{$EMS_PASSWORD}@{HOST.IP}:{$EMS_PORT}/rest/channel/meter0/CurrentL3'
+          tags:
+            -
+              tag: OPENEMS-COMPONENT
+              value: meter0
+        -
+          uuid: 312ac932ef8e44d6a10c6bed93f438c5
+          name: 'Meter0 Frequency'
+          type: HTTP_AGENT
+          key: openems_meter0_frequency
+          trends: 1825d
+          value_type: FLOAT
+          units: Hz
+          description: Frequency
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.value
+            -
+              type: MULTIPLIER
+              parameters:
+                - '0.001'
+          url: '{$EMS_USERNAME}:{$EMS_PASSWORD}@{HOST.IP}:{$EMS_PORT}/rest/channel/meter0/Frequency'
+          tags:
+            -
+              tag: OPENEMS-COMPONENT
+              value: meter0
+          triggers:
+            -
+              uuid: fea2f299036444e68272c3a886f6ce36
+              expression: 'last(/OpenEMS by HTTP/openems_meter0_frequency)<49.9 or last(/OpenEMS by HTTP/openems_meter0_frequency)>50.05'
+              name: 'Grid Frequency Abnormal'
+              opdata: 'Curr. Freq.: {ITEM.LASTVALUE}'
+              priority: WARNING
+              description: 'The Grid Frequency deviates more than normal from 50 Hz'
+              manual_close: 'YES'
+              tags:
+                -
+                  tag: OPENEMS-COMPONENT
+                  value: meter0
+            -
+              uuid: 080209c9dba84af29cf93b1a657794ec
+              expression: 'last(/OpenEMS by HTTP/openems_meter0_frequency)<49.2 or last(/OpenEMS by HTTP/openems_meter0_frequency)>50.2'
+              name: 'Grid Frequency Dangerous'
+              opdata: 'Curr. Freq.: {ITEM.LASTVALUE}'
+              priority: HIGH
+              description: |
+                The Grid Frequency deviates in dangerous levels
+                Load dicsonnect Phase 1, 12,5% of the gridload gets disconnected
+              manual_close: 'YES'
+              dependencies:
+                -
+                  name: 'Grid Frequency very Abnormal'
+                  expression: 'last(/OpenEMS by HTTP/openems_meter0_frequency)<49.8 or last(/OpenEMS by HTTP/openems_meter0_frequency)>50.2'
+              tags:
+                -
+                  tag: OPENEMS-COMPONENT
+                  value: meter0
+            -
+              uuid: 0ac0ff7a8df14ba8a78440a721c60e36
+              expression: 'last(/OpenEMS by HTTP/openems_meter0_frequency)<49.8 or last(/OpenEMS by HTTP/openems_meter0_frequency)>50.2'
+              name: 'Grid Frequency very Abnormal'
+              opdata: 'Curr. Freq.: {ITEM.LASTVALUE}'
+              priority: AVERAGE
+              description: |
+                The Grid Frequency deviates much more than normal from 50 Hz
+                First loads get disconnected from the grid.
+              manual_close: 'YES'
+              dependencies:
+                -
+                  name: 'Grid Frequency Abnormal'
+                  expression: 'last(/OpenEMS by HTTP/openems_meter0_frequency)<49.9 or last(/OpenEMS by HTTP/openems_meter0_frequency)>50.05'
+              tags:
+                -
+                  tag: OPENEMS-COMPONENT
+                  value: meter0
+        -
+          uuid: d101e4365fb544b8b474451ad8f74fe6
+          name: 'Meter0 Reactive Power L1'
+          type: HTTP_AGENT
+          key: openems_meter0_reactivepowerl1
+          delay: 5m
+          history: 365d
+          trends: 1825d
+          units: var
+          description: 'The Reactive Power on Phase L1'
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.value
+          url: '{$EMS_USERNAME}:{$EMS_PASSWORD}@{HOST.IP}:{$EMS_PORT}/rest/channel/meter0/ReactivePowerL1'
+          tags:
+            -
+              tag: OPENEMS-COMPONENT
+              value: meter0
+        -
+          uuid: cd029d5b26044612bac4679150b45b67
+          name: 'Meter0 Reactive Power L2'
+          type: HTTP_AGENT
+          key: openems_meter0_reactivepowerl2
+          delay: 5m
+          history: 365d
+          trends: 1825d
+          units: var
+          description: 'The Reactive Power on Phase L2'
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.value
+          url: '{$EMS_USERNAME}:{$EMS_PASSWORD}@{HOST.IP}:{$EMS_PORT}/rest/channel/meter0/ReactivePowerL2'
+          tags:
+            -
+              tag: OPENEMS-COMPONENT
+              value: meter0
+        -
+          uuid: 09a661d952b14fccb80fe2da57d18e5d
+          name: 'Meter0 Reactive Power L3'
+          type: HTTP_AGENT
+          key: openems_meter0_reactivepowerl3
+          delay: 5m
+          history: 365d
+          trends: 1825d
+          units: var
+          description: 'The Reactive Power on Phase L3'
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.value
+          url: '{$EMS_USERNAME}:{$EMS_PASSWORD}@{HOST.IP}:{$EMS_PORT}/rest/channel/meter0/ReactivePowerL3'
+          tags:
+            -
+              tag: OPENEMS-COMPONENT
+              value: meter0
+        -
+          uuid: 74f71843b10c413987e73b8437f7747a
+          name: 'Meter0 State'
+          type: HTTP_AGENT
+          key: openems_meter0_state
+          history: 365d
+          trends: 1825d
+          description: '0:Ok, 1:Info, 2:Warning, 3:Fault'
+          valuemap:
+            name: State_ValueMap
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.value
+          url: '{$EMS_USERNAME}:{$EMS_PASSWORD}@{HOST.IP}:{$EMS_PORT}/rest/channel/meter0/State'
+          tags:
+            -
+              tag: OPENEMS-COMPONENT
+              value: meter0
+        -
+          uuid: 4986504a7e144fc5b088e106e70714a2
+          name: 'Meter0 Voltage L1'
+          type: HTTP_AGENT
+          key: openems_meter0_voltagel1
+          delay: 5m
+          history: 365d
+          trends: 1825d
+          units: mV
+          description: 'The Voltage on Phase L1'
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.value
+          url: '{$EMS_USERNAME}:{$EMS_PASSWORD}@{HOST.IP}:{$EMS_PORT}/rest/channel/meter0/VoltageL1'
+          tags:
+            -
+              tag: OPENEMS-COMPONENT
+              value: meter0
+        -
+          uuid: cb2aa8cd397e44e68a8b1d9468ba0079
+          name: 'Meter0 Voltage L2'
+          type: HTTP_AGENT
+          key: openems_meter0_voltagel2
+          delay: 5m
+          history: 365d
+          trends: 1825d
+          units: mV
+          description: 'The Voltage on Phase L2'
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.value
+          url: '{$EMS_USERNAME}:{$EMS_PASSWORD}@{HOST.IP}:{$EMS_PORT}/rest/channel/meter0/VoltageL2'
+          tags:
+            -
+              tag: OPENEMS-COMPONENT
+              value: meter0
+        -
+          uuid: 991c0e4c57bc46279c4e60f990cb29dc
+          name: 'Meter0 Voltage L3'
+          type: HTTP_AGENT
+          key: openems_meter0_voltagel3
+          delay: 5m
+          history: 365d
+          trends: 1825d
+          units: mV
+          description: 'The Voltage on Phase L3'
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.value
+          url: '{$EMS_USERNAME}:{$EMS_PASSWORD}@{HOST.IP}:{$EMS_PORT}/rest/channel/meter0/VoltageL3'
+          tags:
+            -
+              tag: OPENEMS-COMPONENT
+              value: meter0
+        -
+          uuid: 442895b682bd4e43bc86264520635319
+          name: 'Meter2 Active Consumption Energy'
+          type: HTTP_AGENT
+          key: openems_meter2_activeconsumptionenergy
+          delay: 5m
+          history: 365d
+          trends: 1825d
+          value_type: FLOAT
+          units: Wh
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.value
+          url: '{$EMS_USERNAME}:{$EMS_PASSWORD}@{HOST.IP}:{$EMS_PORT}/rest/channel/meter2/ActiveConsumptionEnergy'
+          tags:
+            -
+              tag: OPENEMS-COMPONENT
+              value: meter2
+        -
+          uuid: 81d979cef497400e84acb63d858d323f
+          name: 'Meter2 Active Power L1'
+          type: HTTP_AGENT
+          key: openems_meter2_activepowerl1
+          delay: 5m
+          history: 365d
+          trends: 1825d
+          value_type: FLOAT
+          units: W
+          description: 'Negative values for Consumption; positive for Production'
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.value
+          url: '{$EMS_USERNAME}:{$EMS_PASSWORD}@{HOST.IP}:{$EMS_PORT}/rest/channel/meter2/ActivePowerL1'
+          tags:
+            -
+              tag: OPENEMS-COMPONENT
+              value: meter2
+        -
+          uuid: 57c0ee00d7b04c31a6169b32457a86f3
+          name: 'Meter2 Active Power L2'
+          type: HTTP_AGENT
+          key: openems_meter2_activepowerl2
+          delay: 5m
+          history: 365d
+          trends: 1825d
+          value_type: FLOAT
+          units: W
+          description: 'Negative values for Consumption; positive for Production'
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.value
+          url: '{$EMS_USERNAME}:{$EMS_PASSWORD}@{HOST.IP}:{$EMS_PORT}/rest/channel/meter2/ActivePowerL2'
+          tags:
+            -
+              tag: OPENEMS-COMPONENT
+              value: meter2
+        -
+          uuid: a3ccd2dc95484270ac9b355fb79be99d
+          name: 'Meter2 Active Power L3'
+          type: HTTP_AGENT
+          key: openems_meter2_activepowerl3
+          delay: 5m
+          history: 365d
+          trends: 1825d
+          value_type: FLOAT
+          units: W
+          description: 'Negative values for Consumption; positive for Production'
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.value
+          url: '{$EMS_USERNAME}:{$EMS_PASSWORD}@{HOST.IP}:{$EMS_PORT}/rest/channel/meter2/ActivePowerL3'
+          tags:
+            -
+              tag: OPENEMS-COMPONENT
+              value: meter2
+        -
+          uuid: 696b49db2b184fd4886ed4285deac1a1
+          name: 'Meter2 Active Production Energy'
+          type: HTTP_AGENT
+          key: openems_meter2_activeproductionenergy
+          delay: 5m
+          history: 365d
+          trends: 1825d
+          value_type: FLOAT
+          units: Wh
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.value
+          url: '{$EMS_USERNAME}:{$EMS_PASSWORD}@{HOST.IP}:{$EMS_PORT}/rest/channel/meter2/ActiveProductionEnergy'
+          tags:
+            -
+              tag: OPENEMS-COMPONENT
+              value: meter2
+        -
+          uuid: e49eac8f4efa4566bb540a0627c8584c
+          name: 'Meter2 Current L1'
+          type: HTTP_AGENT
+          key: openems_meter2_current1
+          delay: 5m
+          history: 365d
+          trends: 1825d
+          units: mA
+          description: 'The Current in (milli)Ampere on Phase L1'
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.value
+          url: '{$EMS_USERNAME}:{$EMS_PASSWORD}@{HOST.IP}:{$EMS_PORT}/rest/channel/meter2/CurrentL1'
+          tags:
+            -
+              tag: OPENEMS-COMPONENT
+              value: meter2
+        -
+          uuid: 79989ec21ce64fcf908b5e8550809c00
+          name: 'Meter2 Current L2'
+          type: HTTP_AGENT
+          key: openems_meter2_current2
+          delay: 5m
+          history: 365d
+          trends: 1825d
+          units: mA
+          description: 'The Current in (milli)Ampere on Phase L2'
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.value
+          url: '{$EMS_USERNAME}:{$EMS_PASSWORD}@{HOST.IP}:{$EMS_PORT}/rest/channel/meter2/CurrentL2'
+          tags:
+            -
+              tag: OPENEMS-COMPONENT
+              value: meter2
+        -
+          uuid: c7b483e520b3453bb3fda7abb81c6f5d
+          name: 'Meter2 Current L3'
+          type: HTTP_AGENT
+          key: openems_meter2_current3
+          delay: 5m
+          history: 365d
+          trends: 1825d
+          units: mA
+          description: 'The Current in (milli)Ampere on Phase L3'
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.value
+          url: '{$EMS_USERNAME}:{$EMS_PASSWORD}@{HOST.IP}:{$EMS_PORT}/rest/channel/meter2/CurrentL3'
+          tags:
+            -
+              tag: OPENEMS-COMPONENT
+              value: meter2
+        -
+          uuid: 7706328cda56436f824f69d6c9bd1ad4
+          name: 'Meter2 Frequency'
+          type: HTTP_AGENT
+          key: openems_meter2_frequency
+          trends: 1825d
+          value_type: FLOAT
+          units: Hz
+          description: Frequency
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.value
+            -
+              type: MULTIPLIER
+              parameters:
+                - '0.001'
+          url: '{$EMS_USERNAME}:{$EMS_PASSWORD}@{HOST.IP}:{$EMS_PORT}/rest/channel/meter2/Frequency'
+          tags:
+            -
+              tag: OPENEMS-COMPONENT
+              value: meter2
+          triggers:
+            -
+              uuid: 071981f129ca41abaa0cca684a2ad3f5
+              expression: 'last(/OpenEMS by HTTP/openems_meter2_frequency)<49.9 or last(/OpenEMS by HTTP/openems_meter2_frequency)>50.05'
+              name: 'Grid Frequency Abnormal'
+              opdata: 'Curr. Freq.: {ITEM.LASTVALUE}'
+              priority: WARNING
+              description: 'The Grid Frequency deviates more than normal from 50 Hz'
+              manual_close: 'YES'
+              tags:
+                -
+                  tag: OPENEMS-COMPONENT
+                  value: meter2
+            -
+              uuid: f2a60f1935ec4f8ab428409727a23b2b
+              expression: 'last(/OpenEMS by HTTP/openems_meter2_frequency)<49.2 or last(/OpenEMS by HTTP/openems_meter2_frequency)>50.2'
+              name: 'Grid Frequency Dangerous'
+              opdata: 'Curr. Freq.: {ITEM.LASTVALUE}'
+              priority: HIGH
+              description: |
+                The Grid Frequency deviates in dangerous levels
+                Load dicsonnect Phase 1, 12,5% of the gridload gets disconnected
+              manual_close: 'YES'
+              dependencies:
+                -
+                  name: 'Grid Frequency very Abnormal'
+                  expression: 'last(/OpenEMS by HTTP/openems_meter0_frequency)<49.8 or last(/OpenEMS by HTTP/openems_meter0_frequency)>50.2'
+              tags:
+                -
+                  tag: OPENEMS-COMPONENT
+                  value: meter2
+            -
+              uuid: edaa2c2fff594c39ae5ced37e3ead2b6
+              expression: 'last(/OpenEMS by HTTP/openems_meter2_frequency)<49.8 or last(/OpenEMS by HTTP/openems_meter2_frequency)>50.2'
+              name: 'Grid Frequency very Abnormal'
+              opdata: 'Curr. Freq.: {ITEM.LASTVALUE}'
+              priority: AVERAGE
+              description: |
+                The Grid Frequency deviates much more than normal from 50 Hz
+                First loads get disconnected from the grid.
+              manual_close: 'YES'
+              dependencies:
+                -
+                  name: 'Grid Frequency Abnormal'
+                  expression: 'last(/OpenEMS by HTTP/openems_meter0_frequency)<49.9 or last(/OpenEMS by HTTP/openems_meter0_frequency)>50.05'
+              tags:
+                -
+                  tag: OPENEMS-COMPONENT
+                  value: meter2
+        -
+          uuid: c56b8e5c6f844634bd6671a7c7883792
+          name: 'Meter2 Reactive Power L1'
+          type: HTTP_AGENT
+          key: openems_meter2_reactivepowerl1
+          delay: 5m
+          history: 365d
+          trends: 1825d
+          units: var
+          description: 'The Reactive Power on Phase L1'
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.value
+          url: '{$EMS_USERNAME}:{$EMS_PASSWORD}@{HOST.IP}:{$EMS_PORT}/rest/channel/meter2/ReactivePowerL1'
+          tags:
+            -
+              tag: OPENEMS-COMPONENT
+              value: meter2
+        -
+          uuid: 90580ec872dd45f78d40f6bd8bca4e58
+          name: 'Meter2 Reactive Power L2'
+          type: HTTP_AGENT
+          key: openems_meter2_reactivepowerl2
+          delay: 5m
+          history: 365d
+          trends: 1825d
+          units: var
+          description: 'The Reactive Power on Phase L2'
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.value
+          url: '{$EMS_USERNAME}:{$EMS_PASSWORD}@{HOST.IP}:{$EMS_PORT}/rest/channel/meter2/ReactivePowerL2'
+          tags:
+            -
+              tag: OPENEMS-COMPONENT
+              value: meter2
+        -
+          uuid: 5d8db91ca3d841de9131fecbc804d9d2
+          name: 'Meter2 Reactive Power L3'
+          type: HTTP_AGENT
+          key: openems_meter2_reactivepowerl3
+          delay: 5m
+          history: 365d
+          trends: 1825d
+          units: var
+          description: 'The Reactive Power on Phase L3'
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.value
+          url: '{$EMS_USERNAME}:{$EMS_PASSWORD}@{HOST.IP}:{$EMS_PORT}/rest/channel/meter2/ReactivePowerL3'
+          tags:
+            -
+              tag: OPENEMS-COMPONENT
+              value: meter2
+        -
+          uuid: c9d4e5917db24dfcb24d473f974ecaa1
+          name: 'Meter2 State'
+          type: HTTP_AGENT
+          key: openems_meter2_state
+          history: 365d
+          trends: 1825d
+          description: '0:Ok, 1:Info, 2:Warning, 3:Fault'
+          valuemap:
+            name: State_ValueMap
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.value
+          url: '{$EMS_USERNAME}:{$EMS_PASSWORD}@{HOST.IP}:{$EMS_PORT}/rest/channel/meter2/State'
+          tags:
+            -
+              tag: OPENEMS-COMPONENT
+              value: meter2
+        -
+          uuid: 89f524a71d0a44f8a37f8a19f1515450
+          name: 'Meter2 Voltage L1'
+          type: HTTP_AGENT
+          key: openems_meter2_voltagel1
+          delay: 5m
+          history: 365d
+          trends: 1825d
+          units: V
+          description: 'The Voltage on Phase L1'
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.value
+          url: '{$EMS_USERNAME}:{$EMS_PASSWORD}@{HOST.IP}:{$EMS_PORT}/rest/channel/meter2/VoltageL1'
+          tags:
+            -
+              tag: OPENEMS-COMPONENT
+              value: meter2
+        -
+          uuid: 039027116fe7493c93d09ccda7388650
+          name: 'Meter2 Voltage L2'
+          type: HTTP_AGENT
+          key: openems_meter2_voltagel2
+          delay: 5m
+          history: 365d
+          trends: 1825d
+          units: V
+          description: 'The Voltage on Phase L2'
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.value
+          url: '{$EMS_USERNAME}:{$EMS_PASSWORD}@{HOST.IP}:{$EMS_PORT}/rest/channel/meter2/VoltageL2'
+          tags:
+            -
+              tag: OPENEMS-COMPONENT
+              value: meter2
+        -
+          uuid: efab26e28ba94729b95b884e4a158d56
+          name: 'Meter2 Voltage L3'
+          type: HTTP_AGENT
+          key: openems_meter2_voltagel3
+          delay: 5m
+          history: 365d
+          trends: 1825d
+          units: V
+          description: 'The Voltage on Phase L3'
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.value
+          url: '{$EMS_USERNAME}:{$EMS_PASSWORD}@{HOST.IP}:{$EMS_PORT}/rest/channel/meter2/VoltageL3'
+          tags:
+            -
+              tag: OPENEMS-COMPONENT
+              value: meter2
+        -
+          uuid: eeffd2298d684fb6b06f0f012fe0cd20
+          name: 'Active Energy Consumption'
+          type: HTTP_AGENT
+          key: openems_sum_consumptionactiveenergy
+          delay: 5m
+          history: 365d
+          trends: 1825d
+          value_type: FLOAT
+          units: Wh
+          description: |
+            Total amount of energy consumed
+            Calculated from charge and discharge of the battery and generators as well ass retrieval from and provision to grid
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.value
+          url: '{$EMS_USERNAME}:{$EMS_PASSWORD}@{HOST.IP}:{$EMS_PORT}/rest/channel/_sum/ConsumptionActiveEnergy'
+          tags:
+            -
+              tag: OPENEMS-COMPONENT
+              value: _sum
+        -
+          uuid: ebbebccbb23142f7915b4507fb544e4e
+          name: 'Active Power Consumption'
+          type: HTTP_AGENT
+          key: openems_sum_consumptionactivepower
+          delay: 5m
+          history: 365d
+          trends: 1825d
+          units: W
+          description: 'Calculated from charge and discharge of the battery and generators as well ass retrieval from and provision to grid'
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.value
+          url: '{$EMS_USERNAME}:{$EMS_PASSWORD}@{HOST.IP}:{$EMS_PORT}/rest/channel/_sum/ConsumptionActivePower'
+          tags:
+            -
+              tag: OPENEMS-COMPONENT
+              value: _sum
+        -
+          uuid: 761e92ad39654d94a6dc030e1c2f37b2
+          name: 'Active Power Consumption Phase L1'
+          type: HTTP_AGENT
+          key: openems_sum_consumptionactivepowerl1
+          delay: 5m
+          history: 365d
+          trends: 1825d
+          value_type: FLOAT
+          units: W
+          description: 'Consumption on phase L1'
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.value
+          url: '{$EMS_USERNAME}:{$EMS_PASSWORD}@{HOST.IP}:{$EMS_PORT}/rest/channel/_sum/ConsumptionActivePowerL1'
+          tags:
+            -
+              tag: OPENEMS-COMPONENT
+              value: _sum
+        -
+          uuid: efae1cfe0ee945a4b00176ac4fd804c5
+          name: 'Active Power Consumption Phase L2'
+          type: HTTP_AGENT
+          key: openems_sum_consumptionactivepowerl2
+          delay: 5m
+          history: 365d
+          trends: 1825d
+          value_type: FLOAT
+          units: W
+          description: 'Consumption on phase L2'
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.value
+          url: '{$EMS_USERNAME}:{$EMS_PASSWORD}@{HOST.IP}:{$EMS_PORT}/rest/channel/_sum/ConsumptionActivePowerL2'
+          tags:
+            -
+              tag: OPENEMS-COMPONENT
+              value: _sum
+        -
+          uuid: abb1d87b70fd483e8a2c07216984118e
+          name: 'Active Power Consumption Phase L3'
+          type: HTTP_AGENT
+          key: openems_sum_consumptionactivepowerl3
+          delay: 5m
+          history: 365d
+          trends: 1825d
+          value_type: FLOAT
+          units: W
+          description: 'Consumption on phase L3'
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.value
+          url: '{$EMS_USERNAME}:{$EMS_PASSWORD}@{HOST.IP}:{$EMS_PORT}/rest/channel/_sum/ConsumptionActivePowerL3'
+          tags:
+            -
+              tag: OPENEMS-COMPONENT
+              value: _sum
+        -
+          uuid: bec79a15792548c59ca2228c26570a29
+          name: 'Total Active Energy Charge'
+          type: HTTP_AGENT
+          key: openems_sum_essactivechargeenergy
+          delay: 5m
+          history: 365d
+          trends: 1825d
+          value_type: FLOAT
+          units: Wh
+          description: 'Total amount of energy charged into the battery'
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.value
+          url: '{$EMS_USERNAME}:{$EMS_PASSWORD}@{HOST.IP}:{$EMS_PORT}/rest/channel/_sum/EssActiveChargeEnergy'
+          tags:
+            -
+              tag: OPENEMS-COMPONENT
+              value: _sum
+        -
+          uuid: 36d16dc2df7a4b7fa3e94be2f31fbd87
+          name: 'Total Active Energy Discharge'
+          type: HTTP_AGENT
+          key: openems_sum_essactivedischargeenergy
+          delay: 5m
+          history: 365d
+          trends: 1825d
+          value_type: FLOAT
+          units: Wh
+          description: 'Total amount of energy discharged from the battery'
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.value
+          url: '{$EMS_USERNAME}:{$EMS_PASSWORD}@{HOST.IP}:{$EMS_PORT}/rest/channel/_sum/EssActiveDischargeEnergy'
+          tags:
+            -
+              tag: OPENEMS-COMPONENT
+              value: _sum
+        -
+          uuid: f48155d139d84ba89293c73db9f7494e
+          name: 'ESS Active Power'
+          type: HTTP_AGENT
+          key: openems_sum_essactivepower
+          delay: 5m
+          history: 365d
+          trends: 1825d
+          value_type: FLOAT
+          units: W
+          description: 'AC-side power of Energy Storage System. Includes excess DC-PV production for hybrid inverters. Negative values for charge; positive for discharge'
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.value
+          url: '{$EMS_USERNAME}:{$EMS_PASSWORD}@{HOST.IP}:{$EMS_PORT}/rest/channel/_sum/EssActivePower'
+          tags:
+            -
+              tag: OPENEMS-COMPONENT
+              value: _sum
+        -
+          uuid: 2473d64d16a04eb78d166355a5d1dbbc
+          name: 'ESS Active Power Phase L1'
+          type: HTTP_AGENT
+          key: openems_sum_essactivepowerl1
+          delay: 5m
+          history: 365d
+          trends: 1825d
+          value_type: FLOAT
+          units: W
+          description: 'AC-side power of Energy Storage System on phase L1. Includes excess DC-PV production for hybrid inverters. Negative values for charge; positive for discharge'
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.value
+          url: '{$EMS_USERNAME}:{$EMS_PASSWORD}@{HOST.IP}:{$EMS_PORT}/rest/channel/_sum/EssActivePowerL1'
+          tags:
+            -
+              tag: OPENEMS-COMPONENT
+              value: _sum
+        -
+          uuid: 067592ad60974df382d639eb12270fcb
+          name: 'ESS Active Power Phase L2'
+          type: HTTP_AGENT
+          key: openems_sum_essactivepowerl2
+          delay: 5m
+          history: 365d
+          trends: 1825d
+          value_type: FLOAT
+          units: W
+          description: 'AC-side power of Energy Storage System on phase L2. Includes excess DC-PV production for hybrid inverters. Negative values for charge; positive for discharge'
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.value
+          url: '{$EMS_USERNAME}:{$EMS_PASSWORD}@{HOST.IP}:{$EMS_PORT}/rest/channel/_sum/EssActivePowerL2'
+          tags:
+            -
+              tag: OPENEMS-COMPONENT
+              value: _sum
+        -
+          uuid: 52f1a6379f654d55b67b2576b7e0af3c
+          name: 'ESS Active Power Phase L3'
+          type: HTTP_AGENT
+          key: openems_sum_essactivepowerl3
+          delay: 5m
+          history: 365d
+          trends: 1825d
+          value_type: FLOAT
+          units: W
+          description: 'AC-side power of Energy Storage System on phase L3. Includes excess DC-PV production for hybrid inverters. Negative values for charge; positive for discharge'
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.value
+          url: '{$EMS_USERNAME}:{$EMS_PASSWORD}@{HOST.IP}:{$EMS_PORT}/rest/channel/_sum/EssActivePowerL3'
+          tags:
+            -
+              tag: OPENEMS-COMPONENT
+              value: _sum
+        -
+          uuid: 61095031312c453c805204c81b90f86d
+          name: 'State of charge'
+          type: HTTP_AGENT
+          key: openems_sum_esssoc
+          delay: 5m
+          history: 365d
+          trends: 1825d
+          units: '%'
+          description: 'State of charge of the battery'
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.value
+          url: '{$EMS_USERNAME}:{$EMS_PASSWORD}@{HOST.IP}:{$EMS_PORT}/rest/channel/_sum/EssSoc'
+          tags:
+            -
+              tag: OPENEMS-COMPONENT
+              value: _sum
+        -
+          uuid: b3f202fce597483fa8a3587fb01c5d63
+          name: 'Grid Active Power'
+          type: HTTP_AGENT
+          key: openems_sum_gridactivepower
+          delay: 5m
+          history: 365d
+          trends: 1825d
+          value_type: FLOAT
+          units: W
+          description: 'Grid exchange power. Negative values for sell-to-grid; positive for buy-from-grid'
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.value
+          url: '{$EMS_USERNAME}:{$EMS_PASSWORD}@{HOST.IP}:{$EMS_PORT}/rest/channel/_sum/GridActivePower'
+          tags:
+            -
+              tag: OPENEMS-COMPONENT
+              value: _sum
+        -
+          uuid: b428071cb5684fe095bb4fb443c52543
+          name: 'Grid Active Power Phase L1'
+          type: HTTP_AGENT
+          key: openems_sum_gridactivepowerl1
+          delay: 5m
+          history: 365d
+          trends: 1825d
+          value_type: FLOAT
+          units: W
+          description: 'Grid exchange power on phase L1. Negative values for sell-to-grid; positive for buy-from-grid'
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.value
+          url: '{$EMS_USERNAME}:{$EMS_PASSWORD}@{HOST.IP}:{$EMS_PORT}/rest/channel/_sum/GridActivePowerL1'
+          tags:
+            -
+              tag: OPENEMS-COMPONENT
+              value: _sum
+        -
+          uuid: 3adc732d3cd349bbb93d51353d5d3a6f
+          name: 'Grid Active Power Phase L2'
+          type: HTTP_AGENT
+          key: openems_sum_gridactivepowerl2
+          delay: 5m
+          history: 365d
+          trends: 1825d
+          value_type: FLOAT
+          units: W
+          description: 'Grid exchange power on phase L2. Negative values for sell-to-grid; positive for buy-from-grid'
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.value
+          url: '{$EMS_USERNAME}:{$EMS_PASSWORD}@{HOST.IP}:{$EMS_PORT}/rest/channel/_sum/GridActivePowerL2'
+          tags:
+            -
+              tag: OPENEMS-COMPONENT
+              value: _sum
+        -
+          uuid: 14f383cc13744323979bfa1bcba027e6
+          name: 'Grid Active Power Phase L3'
+          type: HTTP_AGENT
+          key: openems_sum_gridactivepowerl3
+          delay: 5m
+          history: 365d
+          trends: 1825d
+          value_type: FLOAT
+          units: W
+          description: 'Grid exchange power on phase L3. Negative values for sell-to-grid; positive for buy-from-grid'
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.value
+          url: '{$EMS_USERNAME}:{$EMS_PASSWORD}@{HOST.IP}:{$EMS_PORT}/rest/channel/_sum/GridActivePowerL3'
+          tags:
+            -
+              tag: OPENEMS-COMPONENT
+              value: _sum
+        -
+          uuid: 33484552bf9446f691930f7d037c3006
+          name: 'Active Energy Retrieved From Grid'
+          type: HTTP_AGENT
+          key: openems_sum_gridbuyactiveenergy
+          delay: 5m
+          history: 365d
+          trends: 1825d
+          value_type: FLOAT
+          units: Wh
+          description: 'Total amount of energy retrieved from the grid'
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.value
+          url: '{$EMS_USERNAME}:{$EMS_PASSWORD}@{HOST.IP}:{$EMS_PORT}/rest/channel/_sum/GridBuyActiveEnergy'
+          tags:
+            -
+              tag: OPENEMS-COMPONENT
+              value: _sum
+        -
+          uuid: 4b47dd24bd974e9096b3b28e74028289
+          name: 'Active Energy Provided To Grid'
+          type: HTTP_AGENT
+          key: openems_sum_gridsellactiveenergy
+          delay: 5m
+          history: 365d
+          trends: 1825d
+          value_type: FLOAT
+          units: Wh
+          description: 'Total amount of energy provided to the grid'
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.value
+          url: '{$EMS_USERNAME}:{$EMS_PASSWORD}@{HOST.IP}:{$EMS_PORT}/rest/channel/_sum/GridSellActiveEnergy'
+          tags:
+            -
+              tag: OPENEMS-COMPONENT
+              value: _sum
+        -
+          uuid: 57118f8736344271862a1826d25d98da
+          name: 'AC Active Energy Production'
+          type: HTTP_AGENT
+          key: openems_sum_productionacactiveenergy
+          delay: 5m
+          history: 365d
+          trends: 1825d
+          value_type: FLOAT
+          units: Wh
+          description: 'Total amount of energy produced by AC producers'
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.value
+          url: '{$EMS_USERNAME}:{$EMS_PASSWORD}@{HOST.IP}:{$EMS_PORT}/rest/channel/_sum/ProductionAcActiveEnergy'
+          tags:
+            -
+              tag: OPENEMS-COMPONENT
+              value: _sum
+        -
+          uuid: 7251d89aadcc46a0b0700f5ee5b7b280
+          name: 'AC Active Power Production'
+          type: HTTP_AGENT
+          key: openems_sum_productionacactivepower
+          delay: 5m
+          history: 365d
+          trends: 1825d
+          units: W
+          description: 'Production from AC source'
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.value
+          url: '{$EMS_USERNAME}:{$EMS_PASSWORD}@{HOST.IP}:{$EMS_PORT}/rest/channel/_sum/ProductionAcActivePower'
+          tags:
+            -
+              tag: OPENEMS-COMPONENT
+              value: _sum
+        -
+          uuid: d38bb14002724fd9a6d25ce81edd5e12
+          name: 'AC Active Power Production Phase L1'
+          type: HTTP_AGENT
+          key: openems_sum_productionacactivepowerl1
+          delay: 5m
+          history: 365d
+          trends: 1825d
+          value_type: FLOAT
+          units: W
+          description: 'Production from AC source on phase L1'
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.value
+          url: '{$EMS_USERNAME}:{$EMS_PASSWORD}@{HOST.IP}:{$EMS_PORT}/rest/channel/_sum/ProductionAcActivePowerL1'
+          tags:
+            -
+              tag: OPENEMS-COMPONENT
+              value: _sum
+        -
+          uuid: 2fdf3a02d16b4469a59fa48d96aefbc5
+          name: 'AC Active Power Production Phase L2'
+          type: HTTP_AGENT
+          key: openems_sum_productionacactivepowerl2
+          delay: 5m
+          history: 365d
+          trends: 1825d
+          value_type: FLOAT
+          units: W
+          description: 'Production from AC source on phase L2'
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.value
+          url: '{$EMS_USERNAME}:{$EMS_PASSWORD}@{HOST.IP}:{$EMS_PORT}/rest/channel/_sum/ProductionAcActivePowerL2'
+          tags:
+            -
+              tag: OPENEMS-COMPONENT
+              value: _sum
+        -
+          uuid: 2df15da78bae41d399230190e25ffb0e
+          name: 'AC Active Power Production Phase L3'
+          type: HTTP_AGENT
+          key: openems_sum_productionacactivepowerl3
+          delay: 5m
+          history: 365d
+          trends: 1825d
+          value_type: FLOAT
+          units: W
+          description: 'Production from AC source on phase L3'
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.value
+          url: '{$EMS_USERNAME}:{$EMS_PASSWORD}@{HOST.IP}:{$EMS_PORT}/rest/channel/_sum/ProductionAcActivePowerL3'
+          tags:
+            -
+              tag: OPENEMS-COMPONENT
+              value: _sum
+        -
+          uuid: bbf7ae1f58034775bade97c0db759986
+          name: 'Active Energy Produced'
+          type: HTTP_AGENT
+          key: openems_sum_productionactiveenergy
+          delay: 5m
+          history: 365d
+          trends: 1825d
+          value_type: FLOAT
+          units: Wh
+          description: 'Total amount of energy produced'
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.value
+          url: '{$EMS_USERNAME}:{$EMS_PASSWORD}@{HOST.IP}:{$EMS_PORT}/rest/channel/_sum/ProductionActiveEnergy'
+          tags:
+            -
+              tag: OPENEMS-COMPONENT
+              value: _sum
+        -
+          uuid: 274dec6d5393454b90a52814a982ed51
+          name: 'Total Active Power Production'
+          type: HTTP_AGENT
+          key: openems_sum_productionactivepower
+          delay: 5m
+          history: 365d
+          trends: 1825d
+          units: W
+          description: 'Total production; always positive'
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.value
+          url: '{$EMS_USERNAME}:{$EMS_PASSWORD}@{HOST.IP}:{$EMS_PORT}/rest/channel/_sum/ProductionActivePower'
+          tags:
+            -
+              tag: OPENEMS-COMPONENT
+              value: _sum
+        -
+          uuid: 5f1b37ce4d884716a0f0c0284300f2a3
+          name: 'DC Active Energy Production'
+          type: HTTP_AGENT
+          key: openems_sum_productiondcactiveenergy
+          delay: 5m
+          history: 365d
+          trends: 1825d
+          value_type: FLOAT
+          units: Wh
+          description: 'Total amount of energy produced by DC producers'
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.value
+          url: '{$EMS_USERNAME}:{$EMS_PASSWORD}@{HOST.IP}:{$EMS_PORT}/rest/channel/_sum/ProductionDcActiveEnergy'
+          tags:
+            -
+              tag: OPENEMS-COMPONENT
+              value: _sum
+        -
+          uuid: 5ce12eee2e3542cc9c0a54569809e35c
+          name: 'DC Actual Power Production'
+          type: HTTP_AGENT
+          key: openems_sum_productiondcactualpower
+          delay: 5m
+          history: 365d
+          trends: 1825d
+          units: W
+          description: 'Production from DC source'
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.value
+          url: '{$EMS_USERNAME}:{$EMS_PASSWORD}@{HOST.IP}:{$EMS_PORT}/rest/channel/_sum/ProductionDcActualPower'
+          tags:
+            -
+              tag: OPENEMS-COMPONENT
+              value: _sum
+        -
+          uuid: e982b9ee95fd4810bfd96d842cd86428
+          name: State
+          type: HTTP_AGENT
+          key: openems_sum_state
+          history: 365d
+          trends: 1825d
+          description: 'State of the system'
+          valuemap:
+            name: State_ValueMap
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.value
+          url: '{$EMS_USERNAME}:{$EMS_PASSWORD}@{HOST.IP}:{$EMS_PORT}/rest/channel/_sum/State'
+          tags:
+            -
+              tag: OPENEMS-COMPONENT
+              value: _sum
+      macros:
+        -
+          macro: '{$EMS_PASSWORD}'
+          type: SECRET_TEXT
+          description: 'The API-Password'
+        -
+          macro: '{$EMS_PORT}'
+          value: '80'
+          description: 'The Port of the EMS-API, defaults to 80'
+        -
+          macro: '{$EMS_USERNAME}'
+          value: x
+          description: 'The API-Username'
+      valuemaps:
+        -
+          uuid: fdc1cc6f6d954a5aac08b54013bb2513
+          name: GridMode_ValueMap
+          mappings:
+            -
+              value: '1'
+              newvalue: On-Grid
+            -
+              value: '2'
+              newvalue: Off-Grid
+        -
+          uuid: 7874883cbd0743e39583c7fcebfa7852
+          name: State_ValueMap
+          mappings:
+            -
+              value: '0'
+              newvalue: Ok
+            -
+              value: '1'
+              newvalue: Info
+            -
+              value: '2'
+              newvalue: Warning
+            -
+              value: '3'
+              newvalue: Fault
+  triggers:
+    -
+      uuid: 4add43faae204a249484b673609e2e47
+      expression: 'last(/OpenEMS by HTTP/openems_battery0_soc)<=5 and last(/OpenEMS by HTTP/openems_batteryinverter0_gridmode)=2'
+      recovery_mode: RECOVERY_EXPRESSION
+      recovery_expression: 'last(/OpenEMS by HTTP/openems_battery0_soc)>=5 and last(/OpenEMS by HTTP/openems_batteryinverter0_gridmode)=2'
+      name: 'Backup Power almost depleted'
+      opdata: 'Curr. SOC: {ITEM.LASTVALUE<1>}'
+      priority: HIGH
+      dependencies:
+        -
+          name: 'Battery below 5%'
+          expression: 'last(/OpenEMS by HTTP/openems_battery0_soc)<=5'
+          recovery_expression: 'last(/OpenEMS by HTTP/openems_battery0_soc)>=10'
+        -
+          name: 'Grid Mode: Off-Grid'
+          expression: 'last(/OpenEMS by HTTP/openems_batteryinverter0_gridmode)=2'
+      tags:
+        -
+          tag: OPENEMS-COMPONENT
+          value: ess0
+        -
+          tag: OPENEMS-COMPONENT
+          value: zabbix-calculated-trigger
+    -
+      uuid: 5ac0ba8fd0d7496d9d1969120baba773
+      expression: 'last(/OpenEMS by HTTP/openems_battery0_soc)<=5 and last(/OpenEMS by HTTP/openems_ess0_gridmode)=2'
+      recovery_mode: RECOVERY_EXPRESSION
+      recovery_expression: 'last(/OpenEMS by HTTP/openems_battery0_soc)>=5 and last(/OpenEMS by HTTP/openems_ess0_gridmode)=2'
+      name: 'Backup Power almost depleted'
+      opdata: 'Curr. SOC: {ITEM.LASTVALUE<1>}'
+      priority: HIGH
+      dependencies:
+        -
+          name: 'Battery below 5%'
+          expression: 'last(/OpenEMS by HTTP/openems_battery0_soc)<=5'
+          recovery_expression: 'last(/OpenEMS by HTTP/openems_battery0_soc)>=10'
+        -
+          name: 'Grid Mode: Off-Grid'
+          expression: 'last(/OpenEMS by HTTP/openems_ess0_gridmode)=2'
+      tags:
+        -
+          tag: OPENEMS-COMPONENT
+          value: ess0
+        -
+          tag: OPENEMS-COMPONENT
+          value: zabbix-calculated-trigger
