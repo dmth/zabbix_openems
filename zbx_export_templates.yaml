@@ -1,6 +1,6 @@
 zabbix_export:
   version: '6.2'
-  date: '2023-01-22T21:03:26Z'
+  date: '2023-04-02T12:22:34Z'
   template_groups:
     -
       uuid: 7df96b18c230490a9a0a9e2307226338
@@ -250,7 +250,6 @@ zabbix_export:
           key: openems_battery0_state
           history: 365d
           trends: 1825d
-          units: '%'
           valuemap:
             name: State_ValueMap
           preprocessing:
@@ -425,7 +424,6 @@ zabbix_export:
           key: openems_batteryinverter0_state
           history: 365d
           trends: 1825d
-          units: '%'
           valuemap:
             name: State_ValueMap
           preprocessing:
@@ -1019,6 +1017,27 @@ zabbix_export:
               tag: OPENEMS-COMPONENT
               value: meter0
         -
+          uuid: 43677aea0a20438f80746c573f9f63b7
+          name: 'Meter0 Active Power'
+          type: HTTP_AGENT
+          key: openems_meter0_activepower
+          delay: 5m
+          history: 365d
+          trends: 1825d
+          value_type: FLOAT
+          units: W
+          description: 'Negative values for Consumption; positive for Production'
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.value
+          url: '{$EMS_USERNAME}:{$EMS_PASSWORD}@{HOST.IP}:{$EMS_PORT}/rest/channel/meter0/ActivePower'
+          tags:
+            -
+              tag: OPENEMS-COMPONENT
+              value: meter0
+        -
           uuid: 0dd3678695dc473ea653cfbfc6d94e9d
           name: 'Meter0 Active Power L1'
           type: HTTP_AGENT
@@ -1389,6 +1408,27 @@ zabbix_export:
               parameters:
                 - $.value
           url: '{$EMS_USERNAME}:{$EMS_PASSWORD}@{HOST.IP}:{$EMS_PORT}/rest/channel/meter2/ActiveConsumptionEnergy'
+          tags:
+            -
+              tag: OPENEMS-COMPONENT
+              value: meter2
+        -
+          uuid: b800ee2f6af24197bfb2f42107fe50d9
+          name: 'Meter2 Active Power'
+          type: HTTP_AGENT
+          key: openems_meter2_activepower
+          delay: 5m
+          history: 365d
+          trends: 1825d
+          value_type: FLOAT
+          units: W
+          description: 'Negative values for Consumption; positive for Production'
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.value
+          url: '{$EMS_USERNAME}:{$EMS_PASSWORD}@{HOST.IP}:{$EMS_PORT}/rest/channel/meter2/ActivePower'
           tags:
             -
               tag: OPENEMS-COMPONENT
